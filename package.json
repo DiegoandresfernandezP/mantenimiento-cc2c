@@ -1,0 +1,1 @@
+{ "name": "mantenimiento-cc2c", "private": true, "version": "0.1.0", "scripts": { "dev": "wrangler dev", "deploy": "wrangler deploy", "db:schema": "wrangler d1 execute cc2c-cmms --remote --file=db/schema.sql", "db:seed": "wrangler d1 execute cc2c-cmms --remote --file=db/seed.sql" }, "devDependencies": { "wrangler": "^4" } }

@@ -1,0 +1,15 @@
+{
+  "name": "cc2c-mantenimiento",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/qr/*", "/tg/*", "/admin/*"]
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "cc2c-cmms", "database_id": "6d300036-8eff-4c64-8a22-2e425edf62cd" }
+  ],
+  "triggers": { "crons": ["0 12 * * *"] },
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS equipo(id TEXT PRIMARY KEY,nombre TEXT,fabricante TEXT,modelo TEXT,serie TEXT,firmware TEXT,ubicacion TEXT,propietario TEXT,fecha_compra TEXT,estado TEXT);
+CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT UNIQUE,rol TEXT,turno TEXT,pin_hash TEXT,pin_salt TEXT,activo INTEGER DEFAULT 1);
+CREATE TABLE IF NOT EXISTS sesion(token TEXT PRIMARY KEY,usuario_id INTEGER,expira TEXT);
+CREATE TABLE IF NOT EXISTS subsistema(id TEXT PRIMARY KEY,nombre TEXT);
+CREATE TABLE IF NOT EXISTS actividad(id TEXT PRIMARY KEY,nombre TEXT,sub_id TEXT,tipo TEXT,frecuencia_txt TEXT,frecuencia_dias INTEGER,frecuencia_horas REAL,es_propuesta INTEGER DEFAULT 1,responsable TEXT);
+CREATE TABLE IF NOT EXISTS recurso_qr(id TEXT PRIMARY KEY,url TEXT,titulo TEXT,act_ref TEXT,aplicabilidad TEXT,verificado_en TEXT);
+CREATE TABLE IF NOT EXISTS registro_horas(id INTEGER PRIMARY KEY AUTOINCREMENT,fecha TEXT,lectura_h INTEGER,lectura_min INTEGER,horometro REAL,anterior REAL,horas_dia REAL,encendido TEXT,apagado TEXT,horas_encendida REAL,turno TEXT,usuario_id INTEGER,obs TEXT,es_base INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS inspeccion(id INTEGER PRIMARY KEY AUTOINCREMENT,fecha TEXT,usuario_id INTEGER,turno TEXT,p1 TEXT,p2 TEXT,p3 TEXT,p4 TEXT,p5 TEXT,p6 TEXT,p7 TEXT,p8 TEXT,apto TEXT,obs TEXT);
+CREATE TABLE IF NOT EXISTS ejecucion(id TEXT PRIMARY KEY,act_id TEXT,fecha TEXT,usuario_id INTEGER,horas_acum REAL,resultado TEXT,evidencia TEXT,obs TEXT,validado_por TEXT);
+CREATE TABLE IF NOT EXISTS falla(id TEXT PRIMARY KEY,fecha TEXT,usuario_id INTEGER,fal_codigo TEXT,codigo_error TEXT,filamento TEXT,horas_acum REAL,descripcion TEXT,accion TEXT,detenido TEXT,foto TEXT,estado TEXT DEFAULT 'Abierta',ot_id TEXT);
+CREATE TABLE IF NOT EXISTS ot(id TEXT PRIMARY KEY,fecha_apertura TEXT,prioridad TEXT,origen TEXT,act_id TEXT,falla_id TEXT,asignado_a TEXT,trabajo TEXT,repuestos TEXT,horas_inicio REAL,fecha_cierre TEXT,parada_h REAL,costo_cop REAL,resultado TEXT,cerrado_por TEXT,verificado_por TEXT,estado TEXT DEFAULT 'Abierta');
+CREATE TABLE IF NOT EXISTS repuesto(id TEXT PRIMARY KEY,descripcion TEXT,compat TEXT,existencia REAL DEFAULT 0,minimo REAL DEFAULT 0,nota TEXT);
+CREATE TABLE IF NOT EXISTS notif_destino(chat_id TEXT PRIMARY KEY,nombre TEXT,creado TEXT);
+CREATE TABLE IF NOT EXISTS notificacion(id INTEGER PRIMARY KEY AUTOINCREMENT,tipo TEXT,clave TEXT,enviado_en TEXT,mensaje TEXT);
+CREATE INDEX IF NOT EXISTS ix_ej_act ON ejecucion(act_id,fecha);
+CREATE INDEX IF NOT EXISTS ix_rh_fecha ON registro_horas(fecha);
+CREATE UNIQUE INDEX IF NOT EXISTS ux_not ON notificacion(tipo,clave);
