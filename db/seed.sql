@@ -47,6 +47,7 @@ INSERT OR REPLACE INTO recurso_qr VALUES('QR-009','https://www.youtube.com/watch
 INSERT OR REPLACE INTO recurso_qr VALUES('QR-010','https://www.youtube.com/watch?v=jyTiruFU-xo',NULL,'ACT-009 / ACT-010','CC1 (fabricante; no es CC2)',NULL);
 INSERT OR REPLACE INTO recurso_qr VALUES('QR-011','https://www.youtube.com/watch?v=hnu-S9mDLV4',NULL,'ACT-009 / ACT-010','CC1 / comunidad; NO específico del CC2C',NULL);
 INSERT OR REPLACE INTO recurso_qr VALUES('QR-012','https://www.youtube.com/watch?v=YM1bGB8A00Q',NULL,'ACT-012','CC2 (no verificado)',NULL);
+INSERT OR REPLACE INTO recurso_qr VALUES('QR-013','https://www.youtube.com/watch?v=hr5gagfiJrI',NULL,'ACT-021 / ACT-010','Posible video oficial del CC2 (no verificado; P-17)',NULL);
 INSERT OR REPLACE INTO equipo VALUES('EQ-001','ELEGOO Centauri Carbon 2 Combo','ELEGOO','Centauri Carbon 2 Combo',NULL,'F01LSUCZB8R63803','Bogotá, Colombia','Moldevivo','2026-08','Operativo');
 INSERT OR IGNORE INTO usuario(nombre,rol,turno) VALUES('Diego Andrés Fernández Peña','Aprobador / Responsable',NULL);
 INSERT OR IGNORE INTO usuario(nombre,rol,turno) VALUES('Deivid Alexander Luque Parada','Responsable de mantenimiento','Mañana');
